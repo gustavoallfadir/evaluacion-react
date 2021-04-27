@@ -3,8 +3,19 @@
 }
 
 #tcs {
+    display: inline-block;
     width: 50%;
     max-width: 400px;
     border-radius: 5px;
-    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.548);
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
+}
+
+.foot-txt {
+    display:inline-block;
+}
+
+
+#tcs, 
+.foot-txt {
+    margin: 10px 10px;
 }

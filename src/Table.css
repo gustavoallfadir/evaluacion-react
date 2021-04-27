@@ -1,0 +1,14 @@
+.Table {
+    width: 93%;
+    max-width: 700px;
+    margin: 30px auto;
+}
+
+.table {
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
+    width: fit-content;
+    margin: 10px auto;
+}
+
+
+

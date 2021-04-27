@@ -1,5 +1,26 @@
 .Form {
     width: 93%;
-    max-width: 600px;
-    margin: 10px auto;
+    max-width: 700px;
+    margin: 30px auto;
+}
+
+.Form h2 {
+    display: inline-block;
+}
+
+.form {
+    margin: 10px 10px;
+}
+
+.btn {
+    box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.float-btn {
+    float: right;
+}
+
+
+.hide {
+    display: none;
 }

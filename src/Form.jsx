@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Form.css';
 
 class Form extends React.Component {
@@ -6,32 +6,45 @@ class Form extends React.Component {
   render() {
     return (
       <div className="Form">
-        <h2>Formulario</h2>
-          <form action="" method="get">
+        <button className="btn btn-primary btn-collapse float-btn" data-toggle="collapse" 
+         data-target="#collapseExample">
+          Agregar empleado
+          </button>
+        
+        <br/>
 
+        <form className="form collapse" id="collapseExample" action="" method="POST">
+
+          <h3>Formulario</h3>
+          <p>Por favor, llene el siguiente formulario para añadir un empleado al registro.</p>
           <div className="form-group">
-            <label htmlFor="nombre">Nombre:</label>
-            <input type="text" className="form-control" placeholder="Escriba su nombre" 
-            name="nombre" id="nombre"/>
+            <label htmlFor="firstName">Nombre:</label>
+            <input type="text" className="form-control" placeholder="Escriba el nombre" 
+            name="fisrtName" id="firstName"/>
           </div>
-
+          
+          <div className="form-group">
+            <label htmlFor="lastName">Apellido:</label>
+            <input type="text" className="form-control" placeholder="Escriba el apellido" 
+            name="lastName" id="lastName"/>
+          </div>
+          
           <div className="form-group">
             <label htmlFor="email">Email:</label>
             <input type="email" className="form-control" 
-              placeholder="Escriba su email" 
+              placeholder="email@ejemplo.com" 
               name="email" id="email"/>
           </div>
 
           <div className="form-group">
-            <label htmlFor="message">Mensaje:</label>
-            <textarea rows ="4" className="form-control" 
-              placeholder="Escriba su mensaje..." 
-              name="message" id="message"></textarea>
+            <label htmlFor="birthday">Fecha de nacimiento:</label>
+            <input className="form-control" type="date" name="burthday" id="birthday"/>
           </div>
 
           <div className="form-group">
-            <label htmlFor="status">Estado civil:</label>
-            <select type="choice" className="form-control" name="edo_civil" id="edo_civil">
+            <label htmlFor="civil_status">Estado civil:</label>
+            <select type="choice" className="form-control" 
+              name="civil_status" id="civil_status">
               <option value="soltero">Soltero</option>
               <option value="casado">Casado</option>
               <option value="divorciado">Divorciado</option>
@@ -39,13 +52,16 @@ class Form extends React.Component {
             </select>
             <br/>
             <div className="container text-center">
-            <input className="btn btn-primary"type="submit" value="Enviar"/>
+              <button className="btn btn-primary btn-collapse" id="enviar" 
+              data-toggle="collapse" data-target="#collapseExample"> Guardar</button>
             </div>
           </div> 
+          <hr/>
         </form>
-      </div>
+    </div>
     );
   }
 }
+
 
 export default Form;
