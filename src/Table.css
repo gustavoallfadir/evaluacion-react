@@ -6,8 +6,12 @@
 
 .table {
     box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.3);
-    width: fit-content;
     margin: 10px auto;
+    max-width: fit-content;
+}
+
+.table-hover tbody tr:hover td {
+    background-color: rgb(138, 169, 255);
 }
 
 

@@ -20,7 +20,10 @@
     float: right;
 }
 
-
 .hide {
     display: none;
+}
+
+.srv-validation-message {
+    color:red;
 }
