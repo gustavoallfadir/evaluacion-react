@@ -33,6 +33,9 @@ Para instalar Yarn, una vez instalado Node.JS, ejecute el siguiente comando:
 #### Instale las dependencias de Node.JS con el siguiente comando:
     $ npm install
 
+### Para instalar las dependencias con yarn:
+    $ yarn install
+
 ### Iniciar el servidor:
 #### Para iniciar el servidor de pruebas ejecute el siguiente comando:
     $ npm start

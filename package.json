@@ -39,5 +39,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gulp-util": "^3.0.8",
+    "gulp-zip": "^5.1.0"
   }
 }
