@@ -19,8 +19,11 @@ Evaluación práctica de frontend con React.JS
 #### Para ejecutar el servidor de prueba hace falta tener instalado Node.js; en caso de no tenerlo instalado, descárguelo de: 
     https://nodejs.org/en/download/
 
+#### Para instalar Node.js en Ubunto o Debian puede ejecutar el siguiente comando:
+    $ sudo apt install nodejs
+
 #### Para instalar Yarn, una vez instalado Node.JS, ejecute el siguiente comando:
-    npm install --global yarn
+    $ npm install --global yarn
 
 #### Para iniciar el servidor de prueba entre a la carpeta del proyecto de esta manera:
     $ cd evaluacion-react
