@@ -13,22 +13,31 @@ Evaluación práctica de frontend con React.JS
     4- El proyecto deberá ser subido a un repositorio Git.
     5- El proyecto deberá contener el archivo README con las instrucciones necesarias para clonar el proyecto y ejecutarlo para su evaluación.
 
-#### Para clonar el repositorio ejecute el siguiente comando en una terminal:
+### Para clonar el repositorio ejecute el siguiente comando en una terminal:
     $ git clone https://github.com/gustavoallfadir/evaluacion-react
 
-#### Para ejecutar el servidor de prueba hace falta tener instalado Node.js; en caso de no tenerlo instalado, descárguelo de: 
+### Requisito previo: Node.JS
+Para ejecutar el servidor de prueba hace falta tener instalado Node.js; en caso de no tenerlo instalado, descárguelo de: 
     https://nodejs.org/en/download/
 
 #### Para instalar Node.js en Ubunto o Debian puede ejecutar el siguiente comando:
     $ sudo apt install nodejs
 
-#### Para instalar Yarn, una vez instalado Node.JS, ejecute el siguiente comando:
+### Opcional:
+Para instalar Yarn, una vez instalado Node.JS, ejecute el siguiente comando:
     $ npm install --global yarn
 
 #### Para iniciar el servidor de prueba entre a la carpeta del proyecto de esta manera:
     $ cd evaluacion-react
 
-#### Y ejecute el siguiente comando:
+#### Instale las dependencias de Node.JS con el siguiente comando:
+    $ npm install
+
+### Iniciar el servidor:
+#### Para iniciar el servidor de pruebas ejecute el siguiente comando:
+    $ npm start
+
+#### O en caso de usar yarn:
     $ yarn start
 
 #### El servidor de prueba iniciará y una ventana del explorador por default lo abrirá en la siguiente dirección:
