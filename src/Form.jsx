@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import './Form.css';
 import eventBus from './EventBus';
 import SimpleReactValidator from 'simple-react-validator';
-import moment from 'moment';
 
 
 class Form extends Component {
@@ -14,13 +13,20 @@ class Form extends Component {
         lastName : "",
         email : "",
         birthday : "",
-        civil_status : "single"
+        civil_status : "Soltero"
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearForm = this.clearForm.bind(this);
-    this.validator = new SimpleReactValidator({autoForceUpdate: this});
+    this.validator = new SimpleReactValidator({
+      autoForceUpdate: this, 
+      messages:{
+        alpha_space: "Por favor use sólo letras y espacios.",
+        email:"Por favor ingrese una dirección válida.",
+        required: "Por favor llene este campo."
+      }
+    });
   }
 
 
@@ -40,7 +46,7 @@ class Form extends Component {
       lastName : "",
       email : "",
       birthday : "",
-      civil_status : "single"
+      civil_status : "Soltero"
     });
   }
 
@@ -61,20 +67,19 @@ class Form extends Component {
         });
       //Feedback de datos guardados
       alert(`Registro guardado:\n
-        Nombre: ${this.state.firstName} ${this.state.lastName}
+        Nombre: ${this.state.firstName.trim()} ${this.state.lastName.trim()}
         email: ${this.state.email}
         Fecha de nacimiento: ${this.state.birthday.split('-').reverse().join('-')}
         Estado civil: ${this.state.civil_status}`);
-      const form = document.querySelector(".form")
-      //Ocultar formulario
-      form.classList.toggle("show");
+      //Ocultar formulario simulando click en el botón de collapse
+      const button = document.querySelector(".btn-collapse").click();
       //Limpiar formulario
       this.setState({
         firstName : "",
         lastName : "",
         email : "",
         birthday : "",
-        civil_status : "single"
+        civil_status : "Soltero"
       });
     }else{
       // Mostrar errores
@@ -106,7 +111,7 @@ class Form extends Component {
             name="firstName" id="firstName" 
             value={this.state.firstName} 
             onChange={this.handleInputChange}/>
-            {this.validator.message('firstName', this.state.firstName, 'required|alpha')}
+            {this.validator.message('firstName', this.state.firstName, 'required|alpha_space')}
           </div>
           
           <div className="form-group">
@@ -115,7 +120,7 @@ class Form extends Component {
             name="lastName" id="lastName"
             value={this.state.lastName} 
             onChange={this.handleInputChange}/>
-            {this.validator.message('lastName', this.state.lastName, 'required|alpha')}
+            {this.validator.message('lastName', this.state.lastName, 'required|alpha_space')}
           </div>
           
           <div className="form-group">
@@ -134,7 +139,7 @@ class Form extends Component {
             name="birthday" id="birthday"
             value={this.state.birthday} 
             onChange={this.handleInputChange}/>
-            {this.validator.message('birthday', moment(this.state.birthday).format('MMMM DD YYYY'), 'required')}
+            {this.validator.message('birthday', this.state.birthday, 'required')}
           </div>
 
           <div className="form-group">
@@ -146,9 +151,9 @@ class Form extends Component {
             {this.validator.message('civil_status', this.state.civil_status, 'required|alpha')}
 
               <option value="single">Soltero</option>
-              <option value="married">Casado</option>
-              <option value="divorced">Divorciado</option>
-              <option value="widowed">Viudo</option>
+              <option value="Casado">Casado</option>
+              <option value="Divorciado">Divorciado</option>
+              <option value="Viudo">Viudo</option>
             
             </select>
             

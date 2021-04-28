@@ -10,6 +10,13 @@ class Table extends Component {
         this.state = {
             employees: [],
         };
+
+        this.estCivil = {
+            single:"Soltero",
+            married:"Casado",
+            divorced:"Divorciado",
+            widowed:"Viudo"
+        };
     }
 
 
@@ -24,11 +31,11 @@ class Table extends Component {
                 ...this.state.employees,
                 {   
                     id:this.state.employees.length+1,
-                    firstName:data.firstName,
-                    lastName:data.lastName,
+                    firstName:data.firstName.trim(),
+                    lastName:data.lastName.trim(),
                     email:data.email,
                     birthday:data.birthday.split('-').reverse().join('-'), 
-                    civil_status:data.civil_status
+                    civil_status: data.civil_status
                 }
             ]},
         )); 
@@ -53,8 +60,10 @@ class Table extends Component {
         })
         .then(response => response.json())
         .then(json =>{
-           console.log(json);
-           this.setState({employees: json.employees.employee})
+            let emps = json.employees.employee;
+            //Aquí pasamos los valores a español haciendo uso de un diccionario (objeto)
+            emps.forEach(e => e.civil_status = this.estCivil[e.civil_status])
+           this.setState({employees: emps})
         });
     }
 
@@ -96,5 +105,5 @@ class Table extends Component {
         );
     }
 }
-//item.civil_status
+
 export default Table;
