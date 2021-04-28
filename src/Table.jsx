@@ -14,10 +14,10 @@ class Table extends Component {
 
 
     componentDidMount() {
+        // Obtiene los datos de la url fuente.
         this._getData();
 
-        console.log(this.state.edo_civil)
-
+        //Bus de evento para traer datos del formulario
         eventBus.on("savedEmployee", (data) =>
         this.setState({
             employees:[
@@ -40,6 +40,7 @@ class Table extends Component {
 
 
     _getData = () => {
+        // Obtiene los datos de la url proporcionada
         fetch("https://virtual-assistant-src.s3.amazonaws.com/employees.json")
         .then(response => {
             if (response.ok) {

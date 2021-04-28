@@ -25,6 +25,7 @@ class Form extends Component {
 
 
   handleInputChange(event) {
+    // Maneja cambios en los inputs del formulario
     const target = event.target;
     const value = target.value;
     const name = target.name;
@@ -32,6 +33,7 @@ class Form extends Component {
   }
 
   clearForm(event) {
+    // Limpia el formulario
     event.preventDefault();
     this.setState({
       firstName : "",
@@ -42,8 +44,9 @@ class Form extends Component {
     });
   }
 
-  
+
   handleSubmit(event) {
+    // Maneja el envío del formulario
     event.preventDefault();
     // Validar formulario
     if (this.validator.allValid()){
@@ -167,6 +170,5 @@ class Form extends Component {
     );
   }
 }
-
 
 export default Form;

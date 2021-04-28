@@ -1,3 +1,4 @@
+// Bus de eventos para transferir datos entre componentes
 const eventBus = {
     on(event, callback) {
       document.addEventListener(event, (e) => callback(e.detail));
