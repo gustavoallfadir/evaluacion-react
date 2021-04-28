@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Form.css';
 import eventBus from './EventBus';
 import SimpleReactValidator from 'simple-react-validator';
+import moment from 'moment';
 
 
 class Form extends Component {
@@ -18,7 +19,8 @@ class Form extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.validator = new SimpleReactValidator();
+    this.clearForm = this.clearForm.bind(this);
+    this.validator = new SimpleReactValidator({autoForceUpdate: this});
   }
 
 
@@ -29,10 +31,22 @@ class Form extends Component {
     this.setState({[name]:value});
   }
 
+  clearForm(event) {
+    event.preventDefault();
+    this.setState({
+      firstName : "",
+      lastName : "",
+      email : "",
+      birthday : "",
+      civil_status : "single"
+    });
+  }
+
   
   handleSubmit(event) {
     event.preventDefault();
-    if (this.validator.fieldValid('email')){
+    // Validar formulario
+    if (this.validator.allValid()){
       eventBus.dispatch(
         "savedEmployee", 
         { 
@@ -42,9 +56,16 @@ class Form extends Component {
           birthday : this.state.birthday,
           civil_status : this.state.civil_status
         });
-      alert(`Registro guardado:\n${this.state.firstName} ${this.state.lastName}\n${this.state.email}`);
+      //Feedback de datos guardados
+      alert(`Registro guardado:\n
+        Nombre: ${this.state.firstName} ${this.state.lastName}
+        email: ${this.state.email}
+        Fecha de nacimiento: ${this.state.birthday.split('-').reverse().join('-')}
+        Estado civil: ${this.state.civil_status}`);
       const form = document.querySelector(".form")
+      //Ocultar formulario
       form.classList.toggle("show");
+      //Limpiar formulario
       this.setState({
         firstName : "",
         lastName : "",
@@ -53,10 +74,8 @@ class Form extends Component {
         civil_status : "single"
       });
     }else{
+      // Mostrar errores
       this.validator.showMessages();
-      // rerender to show messages for the first time
-      // you can use the autoForceUpdate option to do this automatically`
-      this.forceUpdate();
     }
   }
 
@@ -112,7 +131,7 @@ class Form extends Component {
             name="birthday" id="birthday"
             value={this.state.birthday} 
             onChange={this.handleInputChange}/>
-            {this.validator.message('birthday', this.state.birthday, 'required|date')}
+            {this.validator.message('birthday', moment(this.state.birthday).format('MMMM DD YYYY'), 'required')}
           </div>
 
           <div className="form-group">
@@ -134,7 +153,12 @@ class Form extends Component {
 
             <div className="container text-center">
               <button onClick={this.handleSubmit} 
-              className="btn btn-primary btn-collapse"id="enviar">Guardar</button>
+              className="btn btn-primary btn-collapse"id="enviar">Guardar
+              </button>
+
+              <button onClick={this.clearForm} 
+              className="btn btn-warning"id="borrar">Borrar
+              </button>
             </div>
           </div> 
           <hr/>
