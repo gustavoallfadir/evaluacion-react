@@ -45,3 +45,5 @@ Para instalar Yarn, una vez instalado Node.JS, ejecute el siguiente comando:
 
 #### El servidor de prueba iniciará y una ventana del explorador por default lo abrirá en la siguiente dirección:
     localhost:3000
+    
+#### Gustavo Allfadir
